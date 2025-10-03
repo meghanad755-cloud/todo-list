@@ -4,7 +4,7 @@ const createToDo = async (req, res) =>{
     const{ message }= req.body;
 
     if(req.body.message === ""){
-        return React.status(401).json({ errorMessage : "Message cannot be empty "});
+        return res.status(401).json({ errorMessage : "Message cannot be empty "});
     }
 
     //Validation: Check if message is empty or does not meet the length requirements
