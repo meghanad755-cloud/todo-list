@@ -25,9 +25,11 @@ const getAllToDo =async(req,res) =>{
     try{
         const getToDo = await TodoModel.find({});
         res.status(200).json({ data: getToDo});
-    }catch (error){
-        console.log(error);
-    }
+    }catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+}
+
 };
 //when you see an empty {} object passed to the .find() method, it means that the function is requesting all the documents from the collection.
 const deleteToDo = async (req,res)=>{

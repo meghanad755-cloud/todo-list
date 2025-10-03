@@ -1,25 +1,30 @@
-require('dotenv').config()
-const express = require('express')
+require('dotenv').config();
+const express = require('express');
 const RunServer = require("./database/Connection");
 const cors = require('cors');
 const todoRouter = require('./routes/TodoRoutes');
 
-const app = express()
-const PORT = process.env.PORT;
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-app.use(express.json())
+// ✅ enable CORS globally first
 app.use(cors({
-  origin: "*", 
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
+// ✅ body parser
+app.use(express.json());
 
 
-RunServer()
 
-app.use('/todolist',todoRouter)
+// ✅ connect DB
+RunServer();
 
-app.listen(PORT,()=>{
-    console.log(`server is running on ${PORT} port`)
-})
+// ✅ routes
+app.use('/todolist', todoRouter);
+
+app.listen(PORT, () => {
+  console.log(`server is running on ${PORT} port`);
+});
