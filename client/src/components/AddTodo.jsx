@@ -16,7 +16,7 @@ const AddTodo = () => {
             return;
         }
         try{
-            const response = await axios.post('http://localhost:8000/todolist/',{
+            const response = await axios.post('https://todo-list-lmxw.onrender.com/todolist/',{
                 message: message,
             });
             if( response.data.success === 'created') {

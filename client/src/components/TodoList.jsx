@@ -12,7 +12,7 @@ const TodoList = () => {
 
   const getAllTodos = async () =>{
     try{
-      const response = await axios.get('http://localhost:8000/todolist/getall');
+      const response = await axios.get('https://todo-list-lmxw.onrender.com/todolist/getall');
       setTodos(response.data.data);
     } catch(error) {
       console.error(error);
@@ -30,7 +30,7 @@ const TodoList = () => {
 
   const handleDelete = async (id) => {
     try{
-      const result = await axios.delete(`http://localhost:8000/todolist/deleteTodo/${id}`);
+      const result = await axios.delete(`https://todo-list-lmxw.onrender.com/todolist/deleteTodo/${id}`);
       if(result.data.success === 'deleted') {
         toast.success('Todo deleted successfully!');
         getAllTodos();
@@ -68,7 +68,7 @@ const TodoList = () => {
       return; //Blocks the update if validation fails
     }
     try{
-      const result = await axios.put(`http://localhost:8000/todolist/updateToDo/${currentTodo._id}`,{
+      const result = await axios.put(`https://todo-list-lmxw.onrender.com/todolist/updateToDo/${currentTodo._id}`,{
         message:currentTodo.message
       });
       if (result.data.success === 'updated'){
