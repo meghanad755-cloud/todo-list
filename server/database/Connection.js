@@ -1,17 +1,17 @@
-//ufpiiOHGlWe2T8m1
 require('dotenv').config();
-const mongoose =require('mongoose')
+const mongoose = require('mongoose');
 
-
-function RunServer(){ 
-    try {
-        mongoose.connect(process.env.MONGO_URI);
-        console.log('mongoDB connected')
-    } catch (error) {
-        console.log('not connected',error)
-    }
+async function RunServer() {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('✅ MongoDB connected successfully');
+  } catch (error) {
+    console.error('❌ MongoDB connection failed:', error.message);
+    process.exit(1);
+  }
 }
 
 module.exports = RunServer;
-
-
