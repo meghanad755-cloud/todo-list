@@ -38,6 +38,7 @@ const deleteToDo = async (req,res)=>{
         res.status(200).json({ success: "deleted", data:deleted});
     }catch (error){
         console.log(error);
+         res.status(500).json({ error: "Internal Server Error" });
     }
 };
 //findByIdAndDelete(): This is a Mongoose method that performs two action in one step:
